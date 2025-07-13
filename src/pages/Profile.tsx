@@ -87,7 +87,7 @@ export const Profile = () => {
 
         {/* App Info */}
         <div className="text-center mt-8 pt-8 border-t border-border">
-          <p className="text-sm text-muted-foreground">GlowUp v1.0.0</p>
+          <p className="text-sm text-muted-foreground">Menself v1.0.0</p>
           <p className="text-xs text-muted-foreground mt-1">
             Sua jornada de autoimagem começa aqui
           </p>
