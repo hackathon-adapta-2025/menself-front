@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -12,6 +11,8 @@ import { Plan } from "./pages/Plan";
 import { Suggestions } from "./pages/Suggestions";
 import { Progress } from "./pages/Progress";
 import { Profile } from "./pages/Profile";
+import { TaskDetail } from "./pages/TaskDetail";
+import { SuggestionDetail } from "./pages/SuggestionDetail";
 
 // Onboarding
 import { OnboardingStep1 } from "./pages/Onboarding/OnboardingStep1";
@@ -59,8 +60,10 @@ const AppContent = () => {
             <Route path="/" element={<Home />} />
             <Route path="/plan" element={<Plan />} />
             <Route path="/suggestions" element={<Suggestions />} />
+            <Route path="/suggestions/:id" element={<SuggestionDetail />} />
             <Route path="/progress" element={<Progress />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/task/:id" element={<TaskDetail />} />
             <Route path="/onboarding/*" element={<Navigate to="/" replace />} />
             <Route path="*" element={<NotFound />} />
           </>

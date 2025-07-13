@@ -1,6 +1,6 @@
-
 import { Heart, Eye, Info } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface SuggestionCardProps {
   id: string;
@@ -31,6 +31,7 @@ export const SuggestionCard = ({
   onVisualize,
 }: SuggestionCardProps) => {
   const [isLiked, setIsLiked] = useState(liked);
+  const navigate = useNavigate();
 
   const handleLike = () => {
     setIsLiked(!isLiked);
@@ -38,8 +39,7 @@ export const SuggestionCard = ({
   };
 
   const handleLearnMore = () => {
-    console.log('Saiba mais sobre:', title);
-    // Aqui abriria modal com mais informações
+    navigate(`/suggestions/${id}`);
   };
 
   return (

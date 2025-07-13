@@ -16,10 +16,22 @@ const progressData = [
 ];
 
 const mockSelfies = [
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-  'https://images.unsplash.com/photo-1506794778202-cad84cf45f82?w=150&h=150&fit=crop&crop=face',
-  'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=150&h=150&fit=crop&crop=face',
-  'https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=150&h=150&fit=crop&crop=face',
+  {
+    url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=300&fit=crop&crop=face',
+    date: '15 Jul 2025'
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f82?w=200&h=300&fit=crop&crop=face',
+    date: '12 Jul 2025'
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=200&h=300&fit=crop&crop=face',
+    date: '08 Jul 2025'
+  },
+  {
+    url: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=200&h=300&fit=crop&crop=face',
+    date: '05 Jul 2025'
+  },
 ];
 
 export const Progress = () => {
@@ -100,13 +112,14 @@ export const Progress = () => {
               {mockSelfies.map((selfie, index) => (
                 <div key={index} className="glass-card rounded-xl overflow-hidden">
                   <img 
-                    src={selfie} 
+                    src={selfie.url} 
                     alt={`Selfie ${index + 1}`}
-                    className="w-full h-40 object-cover"
+                    className="w-full h-60 object-cover"
                   />
                   <div className="p-3">
-                    <p className="text-sm text-muted-foreground">
-                      Dia {index + 1}
+                    <p className="text-sm font-medium text-foreground">{selfie.date}</p>
+                    <p className="text-xs text-muted-foreground">
+                      Progresso #{index + 1}
                     </p>
                   </div>
                 </div>
@@ -115,7 +128,7 @@ export const Progress = () => {
               {/* Add New Selfie Card */}
               <button
                 onClick={handleAddSelfie}
-                className="glass-card rounded-xl h-40 flex flex-col items-center justify-center hover:bg-white/10 transition-colors"
+                className="glass-card rounded-xl h-60 flex flex-col items-center justify-center hover:bg-white/10 transition-colors"
               >
                 <Upload size={24} className="text-primary mb-2" />
                 <span className="text-sm text-muted-foreground">

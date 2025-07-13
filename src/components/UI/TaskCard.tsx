@@ -1,6 +1,6 @@
-
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight, X } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface TaskCardProps {
   title: string;
@@ -38,16 +38,28 @@ export const TaskCard = ({
   onSkip,
 }: TaskCardProps) => {
   const [isCompleted, setIsCompleted] = useState(completed);
+  const navigate = useNavigate();
 
   const handleComplete = () => {
     setIsCompleted(true);
     onComplete?.();
   };
 
+  const handleCardClick = () => {
+    // Encontrar o ID da tarefa baseado no título
+    const taskId = title === 'Hidratação facial matinal' ? '1' : 
+                   title === '10 minutos de postura' ? '2' : 
+                   title === 'Escolha do outfit' ? '3' : '1';
+    navigate(`/task/${taskId}`);
+  };
+
   return (
-    <div className={`glass-card rounded-xl p-4 transition-all duration-200 ${
-      isCompleted ? 'opacity-60 scale-95' : 'hover:scale-[1.02]'
-    }`}>
+    <div 
+      className={`glass-card rounded-xl p-4 transition-all duration-200 cursor-pointer ${
+        isCompleted ? 'opacity-60 scale-95' : 'hover:scale-[1.02]'
+      }`}
+      onClick={handleCardClick}
+    >
       <div className="flex items-start justify-between mb-3">
         <div className="flex-1">
           <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium mb-2 ${categoryColors[category]}`}>
@@ -58,7 +70,10 @@ export const TaskCard = ({
         </div>
         
         <button
-          onClick={handleComplete}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleComplete();
+          }}
           disabled={isCompleted}
           className={`ml-3 w-8 h-8 rounded-full border-2 flex items-center justify-center transition-colors ${
             isCompleted 
@@ -87,21 +102,28 @@ export const TaskCard = ({
 
       {!isCompleted && (
         <div className="flex space-x-2 mt-4">
+          {onSkip && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onSkip();
+              }}
+              className="px-4 py-2 text-secondary hover:text-foreground transition-colors flex items-center justify-center"
+            >
+              <X size={16} className="mr-1" />
+              Pular
+            </button>
+          )}
           <button
-            onClick={handleComplete}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleComplete();
+            }}
             className="flex-1 bg-primary hover:bg-primary/90 text-white py-2 px-4 rounded-lg font-medium transition-colors flex items-center justify-center"
           >
             Concluir
             <ArrowRight size={16} className="ml-1" />
           </button>
-          {onSkip && (
-            <button
-              onClick={onSkip}
-              className="px-4 py-2 text-secondary hover:text-foreground transition-colors"
-            >
-              Pular
-            </button>
-          )}
         </div>
       )}
     </div>
