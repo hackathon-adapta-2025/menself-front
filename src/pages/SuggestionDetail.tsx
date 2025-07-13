@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Heart, Eye } from 'lucide-react';
@@ -105,14 +104,7 @@ export const SuggestionDetail = () => {
     <div className="min-h-screen bg-background">
       <Header 
         title=""
-        leftAction={
-          <button 
-            onClick={() => navigate('/suggestions')}
-            className="p-2 text-foreground hover:text-primary transition-colors"
-          >
-            <ArrowLeft size={24} />
-          </button>
-        }
+        showBack={true}
       />
       
       <div className="px-4 py-6">
@@ -144,7 +136,7 @@ export const SuggestionDetail = () => {
             <h1 className="text-2xl font-bold text-foreground mb-3">{suggestion.title}</h1>
             <p className="text-muted-foreground mb-6">{suggestion.fullDescription}</p>
             
-            {suggestion.colors && (
+            {'colors' in suggestion && (
               <div className="mb-6">
                 <h3 className="font-semibold text-foreground mb-3">Paleta de cores:</h3>
                 <div className="flex space-x-2">
@@ -159,7 +151,7 @@ export const SuggestionDetail = () => {
               </div>
             )}
             
-            {suggestion.pieces && (
+            {'pieces' in suggestion && (
               <div className="mb-6">
                 <h3 className="font-semibold text-foreground mb-3">Peças essenciais:</h3>
                 <div className="grid grid-cols-2 gap-2">
@@ -172,7 +164,7 @@ export const SuggestionDetail = () => {
               </div>
             )}
             
-            {suggestion.maintenance && (
+            {'maintenance' in suggestion && (
               <div className="mb-6">
                 <div className="glass-card rounded-lg p-4">
                   <p className="text-sm text-muted-foreground mb-1">Manutenção</p>

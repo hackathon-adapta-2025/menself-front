@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, Check, X } from 'lucide-react';
@@ -96,14 +95,7 @@ export const TaskDetail = () => {
     <div className="min-h-screen bg-background">
       <Header 
         title=""
-        leftAction={
-          <button 
-            onClick={() => navigate('/')}
-            className="p-2 text-foreground hover:text-primary transition-colors"
-          >
-            <ArrowLeft size={24} />
-          </button>
-        }
+        showBack={true}
       />
       
       <div className="px-4 py-6">
