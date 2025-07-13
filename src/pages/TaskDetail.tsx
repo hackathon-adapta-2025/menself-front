@@ -141,7 +141,7 @@ export const TaskDetail = () => {
           </div>
           
           <h1 className="text-2xl font-bold text-foreground mb-3">{task.title}</h1>
-          <p className="text-muted-foreground mb-6">{task.fullDescription}</p>
+          <p className="text-muted-foreground mb-6">{task.description}</p>
           
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div className="glass-card rounded-lg p-3">
@@ -150,7 +150,7 @@ export const TaskDetail = () => {
             </div>
             <div className="glass-card rounded-lg p-3">
               <p className="text-xs text-muted-foreground mb-1">Frequência</p>
-              <p className="font-medium text-foreground">{task.frequency}</p>
+              <p className="font-medium text-foreground">Diariamente</p>
             </div>
           </div>
           
