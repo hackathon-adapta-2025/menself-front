@@ -1,22 +1,31 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CalendarIcon } from 'lucide-react';
+import { format } from 'date-fns';
 import { Header } from '../../components/Layout/Header';
+import { Button } from '../../components/ui/button';
+import { Calendar } from '../../components/ui/calendar';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
 
 export const OnboardingStep1 = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [age, setAge] = useState('');
+  const [birthDate, setBirthDate] = useState<Date>();
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const navigate = useNavigate();
 
   const handleNext = () => {
-    if (name && email && age && height && weight) {
+    if (name && email && birthDate && height && weight) {
       localStorage.setItem('onboarding_name', name);
       localStorage.setItem('onboarding_email', email);
-      localStorage.setItem('onboarding_age', age);
+      localStorage.setItem('onboarding_birth_date', birthDate.toISOString());
       localStorage.setItem('onboarding_height', height);
       localStorage.setItem('onboarding_weight', weight);
       navigate('/onboarding/step2');
@@ -66,15 +75,34 @@ export const OnboardingStep1 = () => {
 
           <div>
             <label className="block text-sm font-medium text-foreground mb-2">
-              Qual sua idade?
+              Data de nascimento
             </label>
-            <input
-              type="number"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-              placeholder="Ex: 25"
-              className="w-full px-4 py-3 bg-muted rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
-            />
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  className={cn(
+                    "w-full justify-start text-left font-normal px-4 py-3 h-auto bg-muted border-0 rounded-xl text-foreground hover:bg-muted/80",
+                    !birthDate && "text-muted-foreground"
+                  )}
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {birthDate ? format(birthDate, "dd/MM/yyyy") : <span>Selecione sua data de nascimento</span>}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  mode="single"
+                  selected={birthDate}
+                  onSelect={setBirthDate}
+                  disabled={(date) =>
+                    date > new Date() || date < new Date("1900-01-01")
+                  }
+                  initialFocus
+                  className={cn("p-3 pointer-events-auto")}
+                />
+              </PopoverContent>
+            </Popover>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
@@ -108,7 +136,7 @@ export const OnboardingStep1 = () => {
 
         <button
           onClick={handleNext}
-          disabled={!name || !email || !age || !height || !weight}
+          disabled={!name || !email || !birthDate || !height || !weight}
           className="w-full bg-primary hover:bg-primary/90 disabled:bg-secondary disabled:text-muted-foreground text-white py-4 px-6 rounded-xl font-semibold transition-colors flex items-center justify-center"
         >
           Continuar
