@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 interface SuggestionCardProps {
   id: string;
   title: string;
-  category: 'colorimetria' | 'corte' | 'barba' | 'estilo';
+  category: 'estilo-aparencia' | 'postura-corpo' | 'saude-energia' | 'cuidados-diarios' | 'identidade-expressao' | 'autoestima-motivacao' | 'organizacao-consistencia';
   imageUrl: string;
   description: string;
   liked?: boolean;
@@ -15,10 +15,13 @@ interface SuggestionCardProps {
 }
 
 const categoryLabels = {
-  colorimetria: 'Colorimetria',
-  corte: 'Corte de Cabelo',
-  barba: 'Barba',
-  estilo: 'Estilo',
+  'estilo-aparencia': 'Estilo e Aparência',
+  'postura-corpo': 'Postura e Corpo',
+  'saude-energia': 'Saúde e Energia',
+  'cuidados-diarios': 'Cuidados Diários',
+  'identidade-expressao': 'Identidade e Expressão',
+  'autoestima-motivacao': 'Autoestima e Motivação',
+  'organizacao-consistencia': 'Organização e Consistência',
 };
 
 export const SuggestionCard = ({

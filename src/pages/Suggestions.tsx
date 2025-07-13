@@ -2,21 +2,24 @@ import { useState } from "react";
 import { Filter } from "lucide-react";
 import { Header } from "../components/Layout/Header";
 import { TabBar } from "../components/Layout/TabBar";
-import { SuggestionCard } from "../components/ui/SuggestionCard";
+import { SuggestionCard } from "../components/custom/SuggestionCard";
 
 const categories = [
   { id: "all", label: "Todos" },
-  { id: "colorimetria", label: "Cores" },
-  { id: "corte", label: "Cabelo" },
-  { id: "barba", label: "Barba" },
-  { id: "estilo", label: "Estilo" },
+  { id: "estilo-aparencia", label: "Estilo e Aparência" },
+  { id: "postura-corpo", label: "Postura e Corpo" },
+  { id: "saude-energia", label: "Saúde e Energia" },
+  { id: "cuidados-diarios", label: "Cuidados Diários" },
+  { id: "identidade-expressao", label: "Identidade e Expressão" },
+  { id: "autoestima-motivacao", label: "Autoestima e Motivação" },
+  { id: "organizacao-consistencia", label: "Organização e Consistência" },
 ];
 
 const suggestions = [
   {
     id: "1",
     title: "Paleta Outono Profundo",
-    category: "colorimetria" as const,
+    category: "estilo-aparencia" as const,
     imageUrl:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop",
     description: "Tons terrosos e profundos que valorizam seu tom de pele",
@@ -24,26 +27,42 @@ const suggestions = [
   {
     id: "2",
     title: "Corte Fade Clássico",
-    category: "corte" as const,
+    category: "estilo-aparencia" as const,
     imageUrl:
       "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=300&h=200&fit=crop",
     description: "Degradê suave nas laterais com volume controlado no topo",
   },
   {
     id: "3",
-    title: "Barba Estruturada",
-    category: "barba" as const,
+    title: "Exercícios de Postura",
+    category: "postura-corpo" as const,
     imageUrl:
       "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=300&h=200&fit=crop",
-    description: "Contornos definidos que complementam o formato do rosto",
+    description: "Rotina para fortalecer core e melhorar alinhamento corporal",
   },
   {
     id: "4",
     title: "Look Casual Elegante",
-    category: "estilo" as const,
+    category: "estilo-aparencia" as const,
     imageUrl:
       "https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=300&h=200&fit=crop",
     description: "Camisa social com calça chino - versatilidade garantida",
+  },
+  {
+    id: "5",
+    title: "Rotina de Hidratação",
+    category: "cuidados-diarios" as const,
+    imageUrl:
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    description: "Cuidados essenciais para manter a pele saudável",
+  },
+  {
+    id: "6",
+    title: "Técnicas de Respiração",
+    category: "saude-energia" as const,
+    imageUrl:
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=300&h=200&fit=crop",
+    description: "Exercícios para aumentar energia e reduzir estresse",
   },
 ];
 

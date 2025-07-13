@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Plus, Target, Calendar } from "lucide-react";
 import { Header } from "../components/Layout/Header";
 import { TabBar } from "../components/Layout/TabBar";
-import { TaskCard } from "../components/ui/TaskCard";
+import { TaskCard } from "../components/custom/TaskCard";
 
 const todayTasks = [
   {

@@ -7,7 +7,7 @@ const suggestionDetails = {
   '1': {
     id: '1',
     title: 'Paleta Outono Profundo',
-    category: 'colorimetria' as const,
+    category: 'estilo-aparencia' as const,
     imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=200&fit=crop',
     description: 'Tons terrosos e profundos que valorizam seu tom de pele',
     fullDescription: 'A paleta Outono Profundo é perfeita para quem possui subtom quente e intensidade alta. Essas cores complementam naturalmente seu tom de pele, criando harmonia e destacando seus traços.',
@@ -23,7 +23,7 @@ const suggestionDetails = {
   '2': {
     id: '2',
     title: 'Corte Fade Clássico',
-    category: 'corte' as const,
+    category: 'estilo-aparencia' as const,
     imageUrl: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=300&h=200&fit=crop',
     description: 'Degradê suave nas laterais com volume controlado no topo',
     fullDescription: 'O corte fade clássico oferece versatilidade e elegância. Com laterais bem degradadas e volume controlado no topo, é ideal para quem busca um visual moderno e profissional.',
@@ -38,24 +38,24 @@ const suggestionDetails = {
   },
   '3': {
     id: '3',
-    title: 'Barba Estruturada',
-    category: 'barba' as const,
+    title: 'Exercícios de Postura',
+    category: 'postura-corpo' as const,
     imageUrl: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=300&h=200&fit=crop',
-    description: 'Contornos definidos que complementam o formato do rosto',
-    fullDescription: 'A barba estruturada valoriza o formato do seu rosto com contornos bem definidos. Requer manutenção regular mas oferece um visual masculino e sofisticado.',
+    description: 'Rotina para fortalecer core e melhorar alinhamento corporal',
+    fullDescription: 'Uma postura adequada não só melhora sua aparência, mas também sua saúde e confiança. Estes exercícios ajudam a fortalecer os músculos do core e melhorar o alinhamento corporal.',
     tips: [
-      'Apare regularmente para manter o formato',
-      'Use óleo de barba para hidratação',
-      'Defina bem a linha do pescoço',
-      'Mantenha as bochechas sempre alinhadas'
+      'Pratique 15-20 minutos diariamente',
+      'Mantenha consistência para ver resultados',
+      'Foque na qualidade dos movimentos, não na quantidade',
+      'Respire profundamente durante os exercícios'
     ],
-    maintenance: 'Aparar 2-3x por semana',
-    occasions: ['Trabalho', 'Encontros', 'Eventos especiais']
+    maintenance: 'Praticar diariamente por 15-20 minutos',
+    occasions: ['Casa', 'Academia', 'Escritório']
   },
   '4': {
     id: '4',
     title: 'Look Casual Elegante',
-    category: 'estilo' as const,
+    category: 'estilo-aparencia' as const,
     imageUrl: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=300&h=200&fit=crop',
     description: 'Camisa social com calça chino - versatilidade garantida',
     fullDescription: 'O look casual elegante combina sofisticação com conforto. A camisa social com calça chino oferece versatilidade para diversas ocasiões, desde reuniões casuais até encontros sociais.',
@@ -67,14 +67,49 @@ const suggestionDetails = {
     ],
     pieces: ['Camisa social', 'Calça chino', 'Sapato social casual', 'Cinto de couro'],
     occasions: ['Trabalho casual', 'Almoços', 'Eventos informais']
+  },
+  '5': {
+    id: '5',
+    title: 'Rotina de Hidratação',
+    category: 'cuidados-diarios' as const,
+    imageUrl: 'https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop',
+    description: 'Cuidados essenciais para manter a pele saudável',
+    fullDescription: 'Uma rotina consistente de hidratação é fundamental para manter a pele saudável e com aparência jovem. Estes cuidados simples fazem toda diferença.',
+    tips: [
+      'Use produtos adequados para seu tipo de pele',
+      'Aplique hidratante sempre após o banho',
+      'Não esqueça do protetor solar diariamente',
+      'Mantenha consistência na rotina'
+    ],
+    maintenance: 'Aplicar 2x ao dia - manhã e noite',
+    occasions: ['Diário', 'Manhã', 'Noite']
+  },
+  '6': {
+    id: '6',
+    title: 'Técnicas de Respiração',
+    category: 'saude-energia' as const,
+    imageUrl: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=300&h=200&fit=crop',
+    description: 'Exercícios para aumentar energia e reduzir estresse',
+    fullDescription: 'Técnicas de respiração são ferramentas poderosas para gerenciar estresse, aumentar energia e melhorar o foco. Práticas simples com resultados imediatos.',
+    tips: [
+      'Pratique em um ambiente calmo e silencioso',
+      'Comece com 5-10 minutos diários',
+      'Foque na respiração abdominal profunda',
+      'Use como ferramenta antes de situações estressantes'
+    ],
+    maintenance: 'Praticar 10-15 minutos diariamente',
+    occasions: ['Manhã', 'Antes de reuniões', 'Momentos de estresse']
   }
 };
 
 const categoryLabels = {
-  colorimetria: 'Colorimetria',
-  corte: 'Corte de Cabelo',
-  barba: 'Barba',
-  estilo: 'Estilo',
+  'estilo-aparencia': 'Estilo e Aparência',
+  'postura-corpo': 'Postura e Corpo',
+  'saude-energia': 'Saúde e Energia',
+  'cuidados-diarios': 'Cuidados Diários',
+  'identidade-expressao': 'Identidade e Expressão',
+  'autoestima-motivacao': 'Autoestima e Motivação',
+  'organizacao-consistencia': 'Organização e Consistência',
 };
 
 export const SuggestionDetail = () => {

@@ -34,7 +34,7 @@ export const OnboardingStep1 = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header title="Passo 1/5" />
+      <Header title="Passo 1/6" />
       
       <div className="px-4 py-8">
         <div className="mb-8">
@@ -149,7 +149,7 @@ export const OnboardingStep1 = () => {
 
       <div className="px-4 pb-8">
         <div className="w-full bg-secondary/30 rounded-full h-2">
-          <div className="bg-primary h-2 rounded-full w-1/5 transition-all duration-300" />
+          <div className="bg-primary h-2 rounded-full w-1/6 transition-all duration-300" />
         </div>
       </div>
     </div>
