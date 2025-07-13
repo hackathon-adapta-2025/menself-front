@@ -101,19 +101,20 @@ export const Suggestions = () => {
 
         {/* Suggestions Grid */}
         <div className="space-y-6">
-          <div className="flex space-x-4 overflow-x-auto custom-scrollbar pb-4">
+          <div className="space-y-4">
             {filteredSuggestions.map((suggestion) => (
-              <SuggestionCard
-                key={suggestion.id}
-                id={suggestion.id}
-                title={suggestion.title}
-                category={suggestion.category}
-                imageUrl={suggestion.imageUrl}
-                description={suggestion.description}
-                liked={likedSuggestions.includes(suggestion.id)}
-                onLike={handleLike}
-                onVisualize={handleVisualize}
-              />
+              <div key={suggestion.id} className="w-full">
+                <SuggestionCard
+                  id={suggestion.id}
+                  title={suggestion.title}
+                  category={suggestion.category}
+                  imageUrl={suggestion.imageUrl}
+                  description={suggestion.description}
+                  liked={likedSuggestions.includes(suggestion.id)}
+                  onLike={handleLike}
+                  onVisualize={handleVisualize}
+                />
+              </div>
             ))}
           </div>
         </div>

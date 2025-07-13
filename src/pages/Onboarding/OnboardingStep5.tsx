@@ -8,27 +8,27 @@ const preferences = [
   { 
     id: 'classic', 
     label: 'Clássico & Sofisticado',
-    description: 'Roupas bem ajustadas, cores neutras, cortes limpos. Um visual atemporal com foco em elegância e postura refinada.'
+    description: 'Visual elegante com peças atemporais e cortes refinados.'
   },
   { 
     id: 'modern', 
     label: 'Moderno & Minimalista',
-    description: 'Estilo urbano e funcional, com peças versáteis, cortes retos e paleta de tons sóbrios. Valoriza praticidade com estética clean.'
+    description: 'Estilo urbano com foco em simplicidade e funcionalidade.'
   },
   { 
     id: 'sporty', 
     label: 'Esportivo & Saudável',
-    description: 'Visual ativo, com foco em bem-estar e vitalidade. Looks confortáveis e atléticos, com ênfase em performance e rotina de cuidados físicos.'
+    description: 'Aparência ativa com roupas confortáveis e toque atlético.'
   },
   { 
     id: 'creative', 
     label: 'Criativo & Autêntico',
-    description: 'Estilo que destaca personalidade única. Cores mais ousadas, acessórios marcantes e cortes diferenciados. Foco na expressão pessoal.'
+    description: 'Visual marcante que valoriza originalidade e expressão pessoal.'
   },
   { 
     id: 'casual', 
     label: 'Casual & Natural',
-    description: 'Look leve, com foco em conforto e aparência natural. Jeans, camisetas, texturas orgânicas e cuidados que valorizam o dia a dia.'
+    description: 'Estilo leve e descomplicado para o dia a dia.'
   },
 ];
 

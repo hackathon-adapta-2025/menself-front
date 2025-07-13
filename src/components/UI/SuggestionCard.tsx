@@ -43,7 +43,7 @@ export const SuggestionCard = ({
   };
 
   return (
-    <div className="glass-card rounded-xl overflow-hidden w-72 flex-shrink-0">
+    <div className="glass-card rounded-xl overflow-hidden w-full">
       <div className="relative">
         <img 
           src={imageUrl} 

@@ -62,21 +62,22 @@ export const Plan = () => {
           <div className="mb-4">
             <Progress value={15} className="h-2" />
           </div>
-
-          <button
-            onClick={handleVisualizeGoal}
-            className="w-full border border-primary text-primary hover:bg-primary/10 py-3 px-4 rounded-lg font-medium transition-colors flex items-center justify-center"
-          >
-            <Eye size={16} className="mr-2" />
-            Visualizar Objetivo
-          </button>
         </div>
 
         {/* 12-Month Progress Bar */}
         <div className="glass-card rounded-xl p-6 mb-6">
-          <h3 className="text-lg font-semibold text-foreground mb-4">
-            Progresso Anual
-          </h3>
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-foreground">
+              Meu Plano
+            </h3>
+            <button
+              onClick={handleVisualizeGoal}
+              className="border border-primary text-primary hover:bg-primary/10 py-1 px-3 rounded-lg text-sm font-medium transition-colors flex items-center"
+            >
+              <Eye size={14} className="mr-1" />
+              Visualizar
+            </button>
+          </div>
           <div className="mb-3">
             <div className="flex justify-between text-sm text-muted-foreground mb-2">
               <span>Mês 1</span>
