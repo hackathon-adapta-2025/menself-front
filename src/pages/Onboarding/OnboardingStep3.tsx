@@ -44,7 +44,11 @@ export const OnboardingStep3 = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header title="Passo 3/6" showBack />
+      <Header 
+        showLogo 
+        logoSrc="/lovable-uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
+        showBack 
+      />
       
       <div className="px-4 py-8">
         <div className="mb-8">

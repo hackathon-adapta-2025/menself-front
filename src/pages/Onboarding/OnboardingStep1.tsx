@@ -34,15 +34,18 @@ export const OnboardingStep1 = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header title="Passo 1/6" />
+      <Header 
+        showLogo 
+        logoSrc="/lovable-uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
+      />
       
       <div className="px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-4">
-            Vamos nos conhecer!
+            Sua melhor versão começa aqui
           </h1>
           <p className="text-muted-foreground body-text">
-            Primeiro, me conte um pouco sobre você para personalizarmos sua jornada.
+            Vamos reunir o essencial para criar um plano que combina com seus objetivos e seu estilo.
           </p>
         </div>
 
