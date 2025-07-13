@@ -36,7 +36,7 @@ export const OnboardingStep1 = () => {
     <div className="min-h-screen bg-background">
       <Header 
         showLogo 
-        logoSrc="/lovable-uploads/17f76da1-690c-41d2-88a5-666eb0213486.png"
+        logoSrc="/lovable-uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
       />
       
       <div className="px-4 py-8">

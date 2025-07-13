@@ -34,9 +34,9 @@ export const Header = ({
         )}
         {showLogo && logoSrc ? (
           <img 
-            src={logoSrc} 
+            src="/lovable-uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png" 
             alt="Menself" 
-            className="h-8 w-auto"
+            className="h-6 w-auto mt-1"
           />
         ) : (
           title && (
