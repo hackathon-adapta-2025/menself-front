@@ -1,84 +1,84 @@
-import { useState, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Camera, ArrowRight, Upload, X, Loader2 } from 'lucide-react'
-import { Header } from '../../components/Layout/Header'
-import { uploadImage } from '../../utils/upload' // Ajuste o caminho conforme necessário
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { Camera, ArrowRight, Upload, X, Loader2 } from "lucide-react";
+import { Header } from "../../components/Layout/Header";
+import { uploadImage } from "../../utils/upload"; // Ajuste o caminho conforme necessário
 
 export const OnboardingStep2 = () => {
-  const [isUploading, setIsUploading] = useState(false)
+  const [isUploading, setIsUploading] = useState(false);
   const [uploadedImage, setUploadedImage] = useState<{
-    id: string
-    fileUrl: string
-    fileName: string
-  } | null>(null)
-  const [error, setError] = useState<string | null>(null)
-  const fileInputRef = useRef<HTMLInputElement>(null)
-  const navigate = useNavigate()
+    id: string;
+    fileUrl: string;
+    fileName: string;
+  } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   const handleFileSelect = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const file = event.target.files?.[0]
-    if (!file) return
+    const file = event.target.files?.[0];
+    if (!file) return;
 
-    setError(null)
-    setIsUploading(true)
+    setError(null);
+    setIsUploading(true);
 
     try {
-      const result = await uploadImage(file)
+      const result = await uploadImage(file);
 
       if (!result.success) {
-        throw new Error(result.error || 'Erro ao fazer upload')
+        throw new Error(result.error || "Erro ao fazer upload");
       }
 
       if (!result.data) {
-        throw new Error('Dados do upload não encontrados')
+        throw new Error("Dados do upload não encontrados");
       }
 
       setUploadedImage({
         id: result.data.id,
         fileUrl: result.data.fileUrl,
-        fileName: result.data.fileName
-      })
+        fileName: result.data.fileName,
+      });
 
       // Salvar no localStorage para usar no onboarding final
-      localStorage.setItem('onboarding_profile_picture', result.data.fileUrl)
+      localStorage.setItem("onboarding_profile_picture", result.data.fileUrl);
     } catch (error) {
-      console.error('Erro no upload:', error)
+      console.error("Erro no upload:", error);
       setError(
         error instanceof Error
           ? error.message
-          : 'Erro ao fazer upload da imagem'
-      )
+          : "Erro ao fazer upload da imagem"
+      );
     } finally {
-      setIsUploading(false)
+      setIsUploading(false);
       // Limpar o input
       if (fileInputRef.current) {
-        fileInputRef.current.value = ''
+        fileInputRef.current.value = "";
       }
     }
-  }
+  };
 
   const handleRemoveImage = () => {
-    setUploadedImage(null)
-    setError(null)
-    localStorage.removeItem('onboarding_profile_picture')
-  }
+    setUploadedImage(null);
+    setError(null);
+    localStorage.removeItem("onboarding_profile_picture");
+  };
 
   const handleCameraClick = () => {
-    fileInputRef.current?.click()
-  }
+    fileInputRef.current?.click();
+  };
 
   const handleNext = () => {
     // Pode prosseguir mesmo sem imagem (opcional)
-    navigate('/onboarding/step3')
-  }
+    navigate("/onboarding/step3");
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <Header
         showLogo
-        logoSrc="/lovable-uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
+        logoSrc="/uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
         showBack
       />
 
@@ -134,12 +134,12 @@ export const OnboardingStep2 = () => {
                   )}
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">
-                  {isUploading ? 'Enviando foto...' : 'Adicionar foto'}
+                  {isUploading ? "Enviando foto..." : "Adicionar foto"}
                 </h3>
                 <p className="text-sm text-muted-foreground mb-6">
                   {isUploading
-                    ? 'Aguarde enquanto processamos sua imagem'
-                    : 'Para melhores resultados, use uma foto em ambiente bem iluminado'}
+                    ? "Aguarde enquanto processamos sua imagem"
+                    : "Para melhores resultados, use uma foto em ambiente bem iluminado"}
                 </p>
 
                 <input
@@ -181,7 +181,7 @@ export const OnboardingStep2 = () => {
           disabled={isUploading}
           className="w-full bg-primary hover:bg-primary/90 disabled:bg-secondary disabled:text-muted-foreground text-white py-4 px-6 rounded-xl font-semibold transition-colors flex items-center justify-center"
         >
-          {uploadedImage ? 'Continuar' : 'Pular por agora'}
+          {uploadedImage ? "Continuar" : "Pular por agora"}
           <ArrowRight size={20} className="ml-2" />
         </button>
       </div>
@@ -192,5 +192,5 @@ export const OnboardingStep2 = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

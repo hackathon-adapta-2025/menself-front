@@ -1,89 +1,89 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { ArrowRight, Check, Loader2 } from 'lucide-react'
-import { Header } from '../../components/Layout/Header'
-import { submitOnboarding } from '../../utils/onboarding' // Ajuste o caminho conforme sua estrutura
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowRight, Check, Loader2 } from "lucide-react";
+import { Header } from "../../components/Layout/Header";
+import { submitOnboarding } from "../../utils/onboarding"; // Ajuste o caminho conforme sua estrutura
 
 const preferences = [
   {
-    id: 'classic',
-    label: 'Clássico & Sofisticado',
-    description: 'Visual elegante com peças atemporais e cortes refinados.'
+    id: "classic",
+    label: "Clássico & Sofisticado",
+    description: "Visual elegante com peças atemporais e cortes refinados.",
   },
   {
-    id: 'modern',
-    label: 'Moderno & Minimalista',
-    description: 'Estilo urbano com foco em simplicidade e funcionalidade.'
+    id: "modern",
+    label: "Moderno & Minimalista",
+    description: "Estilo urbano com foco em simplicidade e funcionalidade.",
   },
   {
-    id: 'sporty',
-    label: 'Esportivo & Saudável',
-    description: 'Aparência ativa com roupas confortáveis e toque atlético.'
+    id: "sporty",
+    label: "Esportivo & Saudável",
+    description: "Aparência ativa com roupas confortáveis e toque atlético.",
   },
   {
-    id: 'creative',
-    label: 'Criativo & Autêntico',
+    id: "creative",
+    label: "Criativo & Autêntico",
     description:
-      'Visual marcante que valoriza originalidade e expressão pessoal.'
+      "Visual marcante que valoriza originalidade e expressão pessoal.",
   },
   {
-    id: 'casual',
-    label: 'Casual & Natural',
-    description: 'Estilo leve e descomplicado para o dia a dia.'
-  }
-]
+    id: "casual",
+    label: "Casual & Natural",
+    description: "Estilo leve e descomplicado para o dia a dia.",
+  },
+];
 
 export const OnboardingStep6 = () => {
-  const [selectedPreferences, setSelectedPreferences] = useState<string[]>([])
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const navigate = useNavigate()
+  const [selectedPreferences, setSelectedPreferences] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const togglePreference = (id: string) => {
-    setSelectedPreferences(prev =>
-      prev.includes(id) ? prev.filter(p => p !== id) : [...prev, id]
-    )
-  }
+    setSelectedPreferences((prev) =>
+      prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]
+    );
+  };
 
   const handleFinishOnboarding = async () => {
-    if (selectedPreferences.length === 0) return
+    if (selectedPreferences.length === 0) return;
 
-    setIsLoading(true)
-    setError(null)
+    setIsLoading(true);
+    setError(null);
 
     try {
       localStorage.setItem(
-        'onboarding_preferences',
+        "onboarding_preferences",
         JSON.stringify(selectedPreferences)
-      )
+      );
 
-      const result = await submitOnboarding()
+      const result = await submitOnboarding();
 
       if (result.success) {
-        console.log('Onboarding concluído com sucesso:', result.data)
-        localStorage.setItem('onboarding_result', JSON.stringify(result.data))
+        console.log("Onboarding concluído com sucesso:", result.data);
+        localStorage.setItem("onboarding_result", JSON.stringify(result.data));
 
-        navigate('/onboarding/preview')
+        navigate("/onboarding/preview");
       } else {
-        setError(result.message)
-        console.error('Erro no onboarding:', result.message)
+        setError(result.message);
+        console.error("Erro no onboarding:", result.message);
       }
     } catch (error) {
       const errorMessage =
-        'Erro inesperado ao finalizar configuração. Tente novamente.'
-      setError(errorMessage)
-      console.error('Erro inesperado:', error)
+        "Erro inesperado ao finalizar configuração. Tente novamente.";
+      setError(errorMessage);
+      console.error("Erro inesperado:", error);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className="min-h-screen bg-background">
-      <Header 
-        showLogo 
-        logoSrc="/lovable-uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
-        showBack 
+      <Header
+        showLogo
+        logoSrc="/uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
+        showBack
       />
 
       <div className="px-4 py-8">
@@ -104,8 +104,8 @@ export const OnboardingStep6 = () => {
         )}
 
         <div className="space-y-4 mb-8">
-          {preferences.map(preference => {
-            const isSelected = selectedPreferences.includes(preference.id)
+          {preferences.map((preference) => {
+            const isSelected = selectedPreferences.includes(preference.id);
 
             return (
               <button
@@ -114,9 +114,9 @@ export const OnboardingStep6 = () => {
                 disabled={isLoading}
                 className={`w-full glass-card rounded-xl p-5 text-left transition-all flex items-start justify-between ${
                   isSelected
-                    ? 'ring-2 ring-primary bg-primary/10'
-                    : 'hover:bg-white/10'
-                } ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    ? "ring-2 ring-primary bg-primary/10"
+                    : "hover:bg-white/10"
+                } ${isLoading ? "opacity-50 cursor-not-allowed" : ""}`}
               >
                 <div className="flex-1 pr-4">
                   <h3 className="font-semibold text-foreground mb-2">
@@ -129,14 +129,14 @@ export const OnboardingStep6 = () => {
                 <div
                   className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors flex-shrink-0 ${
                     isSelected
-                      ? 'bg-primary border-primary text-white'
-                      : 'border-secondary'
+                      ? "bg-primary border-primary text-white"
+                      : "border-secondary"
                   }`}
                 >
                   {isSelected && <Check size={16} strokeWidth={3} />}
                 </div>
               </button>
-            )
+            );
           })}
         </div>
 
@@ -165,5 +165,5 @@ export const OnboardingStep6 = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

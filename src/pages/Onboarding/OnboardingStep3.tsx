@@ -1,55 +1,54 @@
-
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Scissors, Palette, Dumbbell, Shirt } from 'lucide-react';
-import { Header } from '../../components/Layout/Header';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowRight, Scissors, Palette, Dumbbell, Shirt } from "lucide-react";
+import { Header } from "../../components/Layout/Header";
 
 const goals = [
   {
-    id: 'hair',
-    title: 'Cabelo e Barba',
-    description: 'Cortes, cuidados e estilo',
+    id: "hair",
+    title: "Cabelo e Barba",
+    description: "Cortes, cuidados e estilo",
     icon: Scissors,
   },
   {
-    id: 'skin',
-    title: 'Cuidados com a Pele',
-    description: 'Skincare e colorimetria',
+    id: "skin",
+    title: "Cuidados com a Pele",
+    description: "Skincare e colorimetria",
     icon: Palette,
   },
   {
-    id: 'fitness',
-    title: 'Forma Física',
-    description: 'Exercícios e postura',
+    id: "fitness",
+    title: "Forma Física",
+    description: "Exercícios e postura",
     icon: Dumbbell,
   },
   {
-    id: 'style',
-    title: 'Estilo Pessoal',
-    description: 'Roupas e acessórios',
+    id: "style",
+    title: "Estilo Pessoal",
+    description: "Roupas e acessórios",
     icon: Shirt,
   },
 ];
 
 export const OnboardingStep3 = () => {
-  const [selectedGoal, setSelectedGoal] = useState('');
+  const [selectedGoal, setSelectedGoal] = useState("");
   const navigate = useNavigate();
 
   const handleNext = () => {
     if (selectedGoal) {
-      localStorage.setItem('onboarding_goal', selectedGoal);
-      navigate('/onboarding/step4');
+      localStorage.setItem("onboarding_goal", selectedGoal);
+      navigate("/onboarding/step4");
     }
   };
 
   return (
     <div className="min-h-screen bg-background">
-      <Header 
-        showLogo 
-        logoSrc="/lovable-uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
-        showBack 
+      <Header
+        showLogo
+        logoSrc="/uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
+        showBack
       />
-      
+
       <div className="px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-4">
@@ -64,21 +63,25 @@ export const OnboardingStep3 = () => {
           {goals.map((goal) => {
             const IconComponent = goal.icon;
             const isSelected = selectedGoal === goal.id;
-            
+
             return (
               <button
                 key={goal.id}
                 onClick={() => setSelectedGoal(goal.id)}
                 className={`w-full glass-card rounded-xl p-4 text-left transition-all ${
-                  isSelected 
-                    ? 'ring-2 ring-primary bg-primary/10' 
-                    : 'hover:bg-white/10'
+                  isSelected
+                    ? "ring-2 ring-primary bg-primary/10"
+                    : "hover:bg-white/10"
                 }`}
               >
                 <div className="flex items-center">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center mr-4 ${
-                    isSelected ? 'bg-primary text-white' : 'bg-secondary/30 text-secondary'
-                  }`}>
+                  <div
+                    className={`w-12 h-12 rounded-full flex items-center justify-center mr-4 ${
+                      isSelected
+                        ? "bg-primary text-white"
+                        : "bg-secondary/30 text-secondary"
+                    }`}
+                  >
                     <IconComponent size={24} />
                   </div>
                   <div className="flex-1">

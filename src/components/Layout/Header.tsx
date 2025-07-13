@@ -1,13 +1,13 @@
-import { ArrowLeft, Bell } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { ArrowLeft, Bell } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
-  title?: string
-  showBack?: boolean
-  showNotifications?: boolean
-  rightAction?: React.ReactNode
-  showLogo?: boolean
-  logoSrc?: string
+  title?: string;
+  showBack?: boolean;
+  showNotifications?: boolean;
+  rightAction?: React.ReactNode;
+  showLogo?: boolean;
+  logoSrc?: string;
 }
 
 export const Header = ({
@@ -16,9 +16,9 @@ export const Header = ({
   showNotifications = false,
   rightAction,
   showLogo = false,
-  logoSrc
+  logoSrc,
 }: HeaderProps) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="flex items-center justify-between px-4 py-3 pt-safe-top bg-background/95 backdrop-blur-lg border-b border-border sticky top-0 z-40">
@@ -33,7 +33,7 @@ export const Header = ({
         )}
         {showLogo && logoSrc ? (
           <img
-            src="/lovable-uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
+            src="/uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
             alt="Menself"
             className="h-6 w-auto mt-1"
           />
@@ -53,5 +53,5 @@ export const Header = ({
         )}
       </div>
     </div>
-  )
-}
+  );
+};
