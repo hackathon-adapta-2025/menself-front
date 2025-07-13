@@ -12,7 +12,7 @@ export const OnboardingPreview = () => {
   const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pt-3">
       <Header title="Seu Futuro Visual" />
 
       <div className="px-4 py-8">
