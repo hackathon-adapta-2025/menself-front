@@ -61,13 +61,16 @@ export const submitOnboarding = async (): Promise<{
       throw new Error('Dados do onboarding não encontrados')
     }
 
-    const response = await fetch('http://localhost:3000/api/onboarding', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(onboardingData)
-    })
+    const response = await fetch(
+      'https://hackathon-ten-sable.vercel.app/api/onboarding',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(onboardingData)
+      }
+    )
 
     const result = await response.json()
 
