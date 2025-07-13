@@ -20,6 +20,7 @@ import { OnboardingStep2 } from "./pages/Onboarding/OnboardingStep2";
 import { OnboardingStep3 } from "./pages/Onboarding/OnboardingStep3";
 import { OnboardingStep4 } from "./pages/Onboarding/OnboardingStep4";
 import { OnboardingStep5 } from "./pages/Onboarding/OnboardingStep5";
+import { OnboardingStep6 } from "./pages/Onboarding/OnboardingStep6";
 import { OnboardingPreview } from "./pages/Onboarding/OnboardingPreview";
 
 import NotFound from "./pages/NotFound";
@@ -52,6 +53,7 @@ const AppContent = () => {
             <Route path="/onboarding/step3" element={<OnboardingStep3 />} />
             <Route path="/onboarding/step4" element={<OnboardingStep4 />} />
             <Route path="/onboarding/step5" element={<OnboardingStep5 />} />
+            <Route path="/onboarding/step6" element={<OnboardingStep6 />} />
             <Route path="/onboarding/preview" element={<OnboardingPreview />} />
             <Route path="*" element={<Navigate to="/onboarding/step1" replace />} />
           </>
