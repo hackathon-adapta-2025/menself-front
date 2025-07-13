@@ -25,20 +25,18 @@ export const TabBar = () => {
             <button
               key={tab.id}
               onClick={() => navigate(tab.path)}
-              className={`flex flex-col items-center py-2 px-1 rounded-lg ai-interactive transition-all duration-300 ${
+              className={`flex flex-col items-center py-2 px-1 rounded-lg transition-colors ${
                 isActive 
-                  ? 'text-primary ai-selected' 
-                  : 'text-secondary hover:text-foreground hover:bg-muted/30'
+                  ? 'text-primary' 
+                  : 'text-secondary hover:text-foreground'
               }`}
             >
               <IconComponent 
                 size={24} 
                 strokeWidth={2}
-                className={`mb-1 transition-all duration-300 ${isActive ? 'animate-pulse' : ''}`}
+                className="mb-1"
               />
-              <span className={`text-xs font-medium transition-all duration-300 ${isActive ? 'font-semibold' : ''}`}>
-                {tab.label}
-              </span>
+              <span className="text-xs font-medium">{tab.label}</span>
             </button>
           );
         })}
