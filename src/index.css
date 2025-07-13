@@ -66,6 +66,123 @@
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 102, 0, 0.3);
+  box-shadow: 
+    0 0 20px rgba(255, 102, 0, 0.15),
+    0 4px 20px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Apple Intelligence-style glow animations */
+@keyframes aiGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(255, 102, 0, 0.2),
+      0 0 40px rgba(255, 102, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(255, 102, 0, 0.4),
+      0 0 60px rgba(255, 102, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes aiShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes aiPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes aiFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* AI-style interactive elements */
+.ai-interactive {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.ai-interactive:hover {
+  animation: aiFloat 2s ease-in-out infinite;
+}
+
+.ai-interactive.active {
+  animation: aiGlow 2s ease-in-out infinite;
+}
+
+.ai-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 102, 0, 0.1),
+    transparent
+  );
+  animation: aiShimmer 2s infinite;
+  pointer-events: none;
+}
+
+.ai-selected {
+  background: linear-gradient(135deg, 
+    rgba(255, 102, 0, 0.15) 0%, 
+    rgba(255, 102, 0, 0.05) 100%);
+  border-color: rgba(255, 102, 0, 0.4);
+  animation: aiGlow 2s ease-in-out infinite;
+}
+
+.ai-button-hover {
+  background: linear-gradient(135deg, 
+    hsl(var(--primary)) 0%, 
+    hsl(var(--primary) / 0.8) 100%);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.ai-button-hover:hover {
+  background: linear-gradient(135deg, 
+    hsl(var(--primary) / 0.9) 0%, 
+    hsl(var(--primary) / 0.7) 100%);
+  box-shadow: 
+    0 0 20px rgba(255, 102, 0, 0.3),
+    0 4px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
 }
 
 /* Custom scrollbar for mobile */
@@ -84,16 +201,22 @@
 
 /* Animation classes */
 .fade-in {
-  animation: fadeIn 0.2s ease-out;
+  animation: fadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .slide-up {
-  animation: slideUp 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: slideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { 
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideUp {

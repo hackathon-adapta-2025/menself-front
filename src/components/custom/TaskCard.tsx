@@ -56,18 +56,18 @@ export const TaskCard = ({
 
   return (
     <div 
-      className={`glass-card rounded-xl p-4 transition-all duration-200 cursor-pointer ${
-        isCompleted ? 'opacity-60 scale-95' : 'hover:scale-[1.02]'
+      className={`glass-card ai-interactive ai-shimmer rounded-xl p-4 cursor-pointer ${
+        isCompleted ? 'opacity-60 ai-selected' : ''
       }`}
       onClick={handleCardClick}
     >
       <div className="flex items-start justify-between mb-3">
         <div className="flex-1">
-          <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium mb-2 ${categoryColors[category]}`}>
+          <div className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium mb-2 transition-all duration-300 hover:scale-105 ${categoryColors[category]}`}>
             {categoryLabels[category]}
           </div>
-          <h3 className="text-lg font-semibold text-foreground mb-1">{title}</h3>
-          <p className="text-sm text-muted-foreground">{description}</p>
+          <h3 className="text-lg font-semibold text-foreground mb-1 transition-colors duration-300">{title}</h3>
+          <p className="text-sm text-muted-foreground transition-colors duration-300">{description}</p>
         </div>
         
         <button
@@ -76,25 +76,25 @@ export const TaskCard = ({
             handleComplete();
           }}
           disabled={isCompleted}
-          className={`ml-3 w-8 h-8 rounded-full border-2 flex items-center justify-center transition-colors ${
+          className={`ml-3 w-8 h-8 rounded-full border-2 flex items-center justify-center ai-interactive transition-all duration-300 ${
             isCompleted 
-              ? 'bg-primary border-primary text-white' 
-              : 'border-secondary hover:border-primary'
+              ? 'bg-primary border-primary text-white ai-selected' 
+              : 'border-secondary hover:border-primary hover:bg-primary/10'
           }`}
         >
-          {isCompleted && <Check size={16} strokeWidth={3} />}
+          {isCompleted && <Check size={16} strokeWidth={3} className="animate-pulse" />}
         </button>
       </div>
 
       {progress > 0 && (
         <div className="mb-3">
           <div className="flex justify-between items-center mb-1">
-            <span className="text-xs text-muted-foreground">Progresso</span>
-            <span className="text-xs font-medium text-foreground">{progress}%</span>
+            <span className="text-xs text-muted-foreground transition-colors duration-300">Progresso</span>
+            <span className="text-xs font-medium text-foreground transition-colors duration-300">{progress}%</span>
           </div>
-          <div className="w-full bg-secondary/30 rounded-full h-2">
+          <div className="w-full bg-secondary/30 rounded-full h-2 overflow-hidden">
             <div 
-              className="bg-primary h-2 rounded-full transition-all duration-300"
+              className="bg-gradient-to-r from-primary to-primary/80 h-2 rounded-full transition-all duration-700 ai-shimmer"
               style={{ width: `${progress}%` }}
             />
           </div>

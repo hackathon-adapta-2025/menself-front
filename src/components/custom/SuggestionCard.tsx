@@ -49,27 +49,27 @@ export const SuggestionCard = ({
 
   return (
     <div 
-      className="glass-card rounded-xl p-4 w-full cursor-pointer hover:scale-[1.02] transition-transform duration-200"
+      className="glass-card ai-interactive ai-shimmer rounded-xl p-4 w-full cursor-pointer"
       onClick={handleCardClick}
     >
       <div className="flex items-start justify-between mb-3">
         <div className="flex-1">
-          <span className="bg-primary/20 text-primary px-2 py-1 rounded-full text-xs font-medium">
+          <span className="bg-primary/20 text-primary px-2 py-1 rounded-full text-xs font-medium transition-all duration-300 hover:bg-primary/30 hover:text-primary-foreground">
             {categoryLabels[category]}
           </span>
-          <h3 className="font-semibold text-foreground mt-2 mb-2">{title}</h3>
-          <p className="text-sm text-muted-foreground">{description}</p>
+          <h3 className="font-semibold text-foreground mt-2 mb-2 transition-colors duration-300">{title}</h3>
+          <p className="text-sm text-muted-foreground transition-colors duration-300">{description}</p>
         </div>
         
         <button
           onClick={handleLike}
-          className={`ml-3 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+          className={`ml-3 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ai-interactive ${
             isLiked 
-              ? 'bg-primary/90 text-white' 
-              : 'bg-muted hover:bg-muted/80 text-muted-foreground'
+              ? 'bg-primary/90 text-white ai-selected' 
+              : 'bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground'
           }`}
         >
-          <Heart size={16} fill={isLiked ? 'currentColor' : 'none'} />
+          <Heart size={16} fill={isLiked ? 'currentColor' : 'none'} className="transition-all duration-300" />
         </button>
       </div>
     </div>
