@@ -18,6 +18,10 @@ export const Plan = () => {
   }
 
   const weeks = useMemo(() => {
+     if(!Array.isArray(data?.profile?.missions) || !data?.profile?.missions.length) {
+      return [];
+    }
+
     return data?.profile?.missions.map(week => {
       return {
         ...week,
@@ -43,11 +47,19 @@ export const Plan = () => {
   }, [weeks])
 
   const daysPercent = useMemo(() => {
+    if(!Array.isArray(weekSelected.dailyTasks)) {
+      return 0;
+    }
+
     const daysCompleted = weekSelected.dailyTasks.filter(
       day => day.completed
     ).length
 
-    return (daysCompleted / weekSelected.dailyTasks.length) * 100
+    const allDays = weekSelected.dailyTasks.length;
+
+    const percent = (daysCompleted / allDays)  * 100;
+
+    return !isNaN(percent) ? percent : "0"
   }, [weekSelected])
 
   return (

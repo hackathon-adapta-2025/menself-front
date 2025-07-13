@@ -8,6 +8,10 @@ export const Home = () => {
   const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
 
   const daysTask = useMemo(() => {
+    if(!Array.isArray(data?.profile?.missions) || !data?.profile?.missions.length) {
+      return [];
+    }
+
     return data?.profile?.missions[0]?.dailyTasks.map((task, index) => {
       return {
         id: index,
@@ -22,10 +26,6 @@ export const Home = () => {
   const [tasks, setTasks] = useState(daysTask)
   const userName = localStorage.getItem('onboarding_name') || 'Usuário'
   const completedTasks = tasks.filter(task => task.progress === 100).length
-
-  useEffect(() => {
-    console.log(daysTask, 'daysTask')
-  }, [data])
 
   const handleCompleteTask = (taskId: string) => {
     setTasks(prev =>
