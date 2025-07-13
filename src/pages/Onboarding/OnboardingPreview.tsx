@@ -4,10 +4,9 @@ import { Header } from '../../components/Layout/Header'
 
 export const OnboardingPreview = () => {
   const navigate = useNavigate()
-  const userName = localStorage.getItem('onboarding_name') || 'Usuário'
 
   const handleStartPlan = () => {
-    navigate('/profile')
+    navigate('/')
   }
 
   const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
