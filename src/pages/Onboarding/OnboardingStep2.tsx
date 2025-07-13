@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Camera, ArrowRight, Upload } from 'lucide-react';
@@ -21,7 +20,7 @@ export const OnboardingStep2 = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header title="Passo 2/5" showBack />
+      <Header title="Passo 2/6" showBack />
       
       <div className="px-4 py-8">
         <div className="mb-8">

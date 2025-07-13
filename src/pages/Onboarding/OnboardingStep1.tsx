@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, CalendarIcon } from 'lucide-react';
@@ -34,7 +33,7 @@ export const OnboardingStep1 = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header title="Passo 1/5" />
+      <Header title="Passo 1/6" />
       
       <div className="px-4 py-8">
         <div className="mb-8">
