@@ -1,25 +1,24 @@
-
-import { ArrowLeft, Bell } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { ArrowLeft, Bell } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 interface HeaderProps {
-  title?: string;
-  showBack?: boolean;
-  showNotifications?: boolean;
-  rightAction?: React.ReactNode;
-  showLogo?: boolean;
-  logoSrc?: string;
+  title?: string
+  showBack?: boolean
+  showNotifications?: boolean
+  rightAction?: React.ReactNode
+  showLogo?: boolean
+  logoSrc?: string
 }
 
-export const Header = ({ 
-  title, 
-  showBack = false, 
+export const Header = ({
+  title,
+  showBack = false,
   showNotifications = false,
   rightAction,
   showLogo = false,
   logoSrc
 }: HeaderProps) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <div className="flex items-center justify-between px-4 py-3 pt-safe-top bg-background/95 backdrop-blur-lg border-b border-border sticky top-0 z-40">
@@ -27,15 +26,15 @@ export const Header = ({
         {showBack && (
           <button
             onClick={() => navigate(-1)}
-            className="mr-3 p-2 -ml-2 text-foreground hover:text-primary transition-colors"
+            className="mt-2 mr-3 p-2 -ml-2 text-foreground hover:text-primary transition-colors"
           >
             <ArrowLeft size={24} strokeWidth={2} />
           </button>
         )}
         {showLogo && logoSrc ? (
-          <img 
-            src="/lovable-uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png" 
-            alt="Menself" 
+          <img
+            src="/lovable-uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
+            alt="Menself"
             className="h-6 w-auto mt-1"
           />
         ) : (
@@ -44,7 +43,7 @@ export const Header = ({
           )
         )}
       </div>
-      
+
       <div className="flex items-center space-x-2">
         {rightAction}
         {showNotifications && (
@@ -54,5 +53,5 @@ export const Header = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}
