@@ -1,53 +1,13 @@
-<<<<<<< HEAD
-
-import { Calendar, CheckCircle, Lock, Eye } from 'lucide-react';
-import { Header } from '../components/Layout/Header';
-import { TabBar } from '../components/Layout/TabBar';
-import { Progress } from '../components/ui/progress';
-import { useMemo } from 'react';
-
-=======
+import { Calendar, CheckCircle, Lock, Eye } from 'lucide-react'
+import { Header } from '../components/Layout/Header'
+import { TabBar } from '../components/Layout/TabBar'
+import { Progress } from '../components/ui/progress'
+import { useMemo } from 'react'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger
 } from '@/components/ui/popover'
-import { Calendar, CheckCircle, Eye, Lock } from 'lucide-react'
-import { Header } from '../components/Layout/Header'
-import { TabBar } from '../components/Layout/TabBar'
-import { Progress } from '../components/ui/progress'
-
-const weeks = [
-  {
-    week: 1,
-    title: 'Fundamentos',
-    description: 'Estabelecendo rotinas básicas',
-    completed: true,
-    current: false
-  },
-  {
-    week: 2,
-    title: 'Cuidados Essenciais',
-    description: 'Skincare e higiene pessoal',
-    completed: false,
-    current: true
-  },
-  {
-    week: 3,
-    title: 'Estilo Pessoal',
-    description: 'Descobrindo seu visual',
-    completed: false,
-    current: false
-  },
-  {
-    week: 4,
-    title: 'Forma Física',
-    description: 'Exercícios e postura',
-    completed: false,
-    current: false
-  }
-]
->>>>>>> eca9bd68733ac27ef8881af3a6ac92154d21bbd7
 
 export const Plan = () => {
   const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
@@ -57,37 +17,38 @@ export const Plan = () => {
     // Aqui abriria modal com a imagem de preview
   }
 
-  const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
-
   const weeks = useMemo(() => {
-    return data?.profile?.missions.map((week) => {
+    return data?.profile?.missions.map(week => {
       return {
         ...week,
-        completed: week.dailyTasks.filter((daily) => daily.progress === 100).length / week.dailyTasks.length * 100,
+        completed:
+          (week.dailyTasks.filter(daily => daily.progress === 100).length /
+            week.dailyTasks.length) *
+          100,
         current: false
       }
     })
-  }, [data]);
+  }, [data])
 
   const weeksCompleted = useMemo(() => {
-    return weeks.filter((week) => week.completed).length;
-
-  }, [weeks]);
+    return weeks.filter(week => week.completed).length
+  }, [weeks])
 
   const weeksPercent = useMemo(() => {
-
-    return weeksCompleted / weeks.length * 100;
-  }, [weeks]);
+    return (weeksCompleted / weeks.length) * 100
+  }, [weeks])
 
   const weekSelected = useMemo(() => {
-    return weeks.find((week) => !week.completed)
-  }, [weeks]);
+    return weeks.find(week => !week.completed)
+  }, [weeks])
 
   const daysPercent = useMemo(() => {
-    const daysCompleted = weekSelected.dailyTasks.filter((day) => day.completed).length;
+    const daysCompleted = weekSelected.dailyTasks.filter(
+      day => day.completed
+    ).length
 
-    return daysCompleted / weekSelected.dailyTasks.length * 100;
-  }, [weekSelected]);
+    return (daysCompleted / weekSelected.dailyTasks.length) * 100
+  }, [weekSelected])
 
   return (
     <div className="min-h-screen bg-background pb-20 pt-3">
@@ -98,13 +59,9 @@ export const Plan = () => {
         <div className="glass-card rounded-xl p-6 mb-6">
           <div className="flex items-center justify-between mb-4">
             <div>
-<<<<<<< HEAD
-              <h2 className="text-xl font-semibold text-foreground">{weekSelected?.missionTitle}</h2>
-=======
               <h2 className="text-xl font-semibold text-foreground">
-                Semana 2
+                {weekSelected?.missionTitle}
               </h2>
->>>>>>> eca9bd68733ac27ef8881af3a6ac92154d21bbd7
               <p className="text-muted-foreground">Cuidados Essenciais</p>
             </div>
             <div className="text-right">
@@ -161,25 +118,14 @@ export const Plan = () => {
             Cronograma Mensal
           </h3>
 
-<<<<<<< HEAD
           {weeks?.map((week, index) => (
-=======
-          {weeks.map(week => (
->>>>>>> eca9bd68733ac27ef8881af3a6ac92154d21bbd7
             <div
               key={week.week}
-              className={`glass-card rounded-xl p-4 transition-all ${week.current ? 'ring-2 ring-primary bg-primary/10' : ''
-                }`}
+              className={`glass-card rounded-xl p-4 transition-all ${
+                week.current ? 'ring-2 ring-primary bg-primary/10' : ''
+              }`}
             >
               <div className="flex items-center">
-<<<<<<< HEAD
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-4 ${week.completed
-                  ? 'bg-green-500 text-white'
-                  : week.current
-                    ? 'bg-primary text-white'
-                    : 'bg-secondary/30 text-secondary'
-                  }`}>
-=======
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center mr-4 ${
                     week.completed
@@ -189,7 +135,6 @@ export const Plan = () => {
                       : 'bg-secondary/30 text-secondary'
                   }`}
                 >
->>>>>>> eca9bd68733ac27ef8881af3a6ac92154d21bbd7
                   {week.completed ? (
                     <CheckCircle size={20} />
                   ) : week.current ? (

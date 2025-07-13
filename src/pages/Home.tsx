@@ -4,31 +4,28 @@ import { Header } from '../components/Layout/Header'
 import { TabBar } from '../components/Layout/TabBar'
 import { TaskCard } from '../components/custom/TaskCard'
 
-
 export const Home = () => {
-    const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
+  const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
 
-    const daysTask = useMemo(() => {
+  const daysTask = useMemo(() => {
     return data?.profile?.missions[0]?.dailyTasks.map((task, index) => {
-      return ({
+      return {
         id: index,
         title: task.title,
         description: task.description,
         category: 'skincare' as const,
         progress: task.progress ?? 0
-      })
-    });
+      }
+    })
   }, [data])
-
 
   const [tasks, setTasks] = useState(daysTask)
   const userName = localStorage.getItem('onboarding_name') || 'Usuário'
   const completedTasks = tasks.filter(task => task.progress === 100).length
 
   useEffect(() => {
-    console.log(daysTask, "daysTask")
-  }, [data]);
-
+    console.log(daysTask, 'daysTask')
+  }, [data])
 
   const handleCompleteTask = (taskId: string) => {
     setTasks(prev =>
@@ -47,13 +44,8 @@ export const Home = () => {
         logoSrc="/lovable-uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
         showNotifications
         rightAction={
-<<<<<<< HEAD
           <span className="text-lg font-medium text-foreground mr-2">
             Olá, {data?.user?.name}
-=======
-          <span className="text-lg font-medium text-foreground mr-2 mt-2">
-            Olá, {data.user.name}
->>>>>>> eca9bd68733ac27ef8881af3a6ac92154d21bbd7
           </span>
         }
       />
