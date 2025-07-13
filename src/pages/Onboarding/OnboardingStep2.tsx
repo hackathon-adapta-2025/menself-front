@@ -81,7 +81,7 @@ export const OnboardingStep2 = () => {
 
       <div className="px-4 pb-8">
         <div className="w-full bg-secondary/30 rounded-full h-2">
-          <div className="bg-primary h-2 rounded-full w-2/5 transition-all duration-300" />
+          <div className="bg-primary h-2 rounded-full w-2/6 transition-all duration-300" />
         </div>
       </div>
     </div>

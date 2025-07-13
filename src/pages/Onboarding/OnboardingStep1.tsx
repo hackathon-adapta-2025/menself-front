@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, CalendarIcon } from 'lucide-react';
@@ -148,7 +149,7 @@ export const OnboardingStep1 = () => {
 
       <div className="px-4 pb-8">
         <div className="w-full bg-secondary/30 rounded-full h-2">
-          <div className="bg-primary h-2 rounded-full w-1/5 transition-all duration-300" />
+          <div className="bg-primary h-2 rounded-full w-1/6 transition-all duration-300" />
         </div>
       </div>
     </div>
