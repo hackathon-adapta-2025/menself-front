@@ -133,6 +133,7 @@ export const SuggestionDetail = () => {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
   const [isLiked, setIsLiked] = useState(false)
+  const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
 
   const suggestion = id
     ? suggestionDetails[id as keyof typeof suggestionDetails]
@@ -161,11 +162,6 @@ export const SuggestionDetail = () => {
       <div className="px-4 py-6">
         <div className="glass-card rounded-xl overflow-hidden">
           <div className="relative">
-            {/* <img 
-              src={suggestion.imageUrl} 
-              alt={suggestion.title}
-              className="w-full h-64 object-cover"
-            /> */}
             <div className="absolute top-4 left-4">
               <span className="bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
                 {categoryLabels[suggestion.category]}
@@ -197,13 +193,16 @@ export const SuggestionDetail = () => {
                   Paleta de cores:
                 </h3>
                 <div className="flex space-x-2">
-                  {suggestion.colors.map((color, index) => (
-                    <div
-                      key={index}
-                      className="w-12 h-12 rounded-lg border border-white/20"
-                      style={{ backgroundColor: color }}
-                    />
-                  ))}
+                  {Object.values(data.profile.colorPalatte)
+                    .reverse()
+                    .slice(1)
+                    .map((color: string, index: number) => (
+                      <div
+                        key={index}
+                        className="w-12 h-12 rounded-lg border border-white/20"
+                        style={{ backgroundColor: color }}
+                      />
+                    ))}
                 </div>
               </div>
             )}

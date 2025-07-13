@@ -47,8 +47,13 @@ export const Home = () => {
         logoSrc="/lovable-uploads/68b3e0c8-9c1f-4db4-9eeb-6f8daba716d4.png"
         showNotifications
         rightAction={
+<<<<<<< HEAD
           <span className="text-lg font-medium text-foreground mr-2">
             Olá, {data?.user?.name}
+=======
+          <span className="text-lg font-medium text-foreground mr-2 mt-2">
+            Olá, {data.user.name}
+>>>>>>> eca9bd68733ac27ef8881af3a6ac92154d21bbd7
           </span>
         }
       />
