@@ -5,12 +5,31 @@ import { ArrowRight, Check } from 'lucide-react';
 import { Header } from '../../components/Layout/Header';
 
 const preferences = [
-  { id: 'natural', label: 'Visual natural e discreto' },
-  { id: 'modern', label: 'Estilo moderno e atual' },
-  { id: 'classic', label: 'Visual clássico e elegante' },
-  { id: 'bold', label: 'Mais ousado e expressivo' },
-  { id: 'professional', label: 'Foco no ambiente profissional' },
-  { id: 'casual', label: 'Estilo casual e descontraído' },
+  { 
+    id: 'classic', 
+    label: 'Clássico & Sofisticado',
+    description: 'Roupas bem ajustadas, cores neutras, cortes limpos. Um visual atemporal com foco em elegância e postura refinada.'
+  },
+  { 
+    id: 'modern', 
+    label: 'Moderno & Minimalista',
+    description: 'Estilo urbano e funcional, com peças versáteis, cortes retos e paleta de tons sóbrios. Valoriza praticidade com estética clean.'
+  },
+  { 
+    id: 'sporty', 
+    label: 'Esportivo & Saudável',
+    description: 'Visual ativo, com foco em bem-estar e vitalidade. Looks confortáveis e atléticos, com ênfase em performance e rotina de cuidados físicos.'
+  },
+  { 
+    id: 'creative', 
+    label: 'Criativo & Autêntico',
+    description: 'Estilo que destaca personalidade única. Cores mais ousadas, acessórios marcantes e cortes diferenciados. Foco na expressão pessoal.'
+  },
+  { 
+    id: 'casual', 
+    label: 'Casual & Natural',
+    description: 'Look leve, com foco em conforto e aparência natural. Jeans, camisetas, texturas orgânicas e cuidados que valorizam o dia a dia.'
+  },
 ];
 
 export const OnboardingStep5 = () => {
@@ -46,7 +65,7 @@ export const OnboardingStep5 = () => {
           </p>
         </div>
 
-        <div className="space-y-3 mb-8">
+        <div className="space-y-4 mb-8">
           {preferences.map((preference) => {
             const isSelected = selectedPreferences.includes(preference.id);
             
@@ -54,16 +73,21 @@ export const OnboardingStep5 = () => {
               <button
                 key={preference.id}
                 onClick={() => togglePreference(preference.id)}
-                className={`w-full glass-card rounded-xl p-4 text-left transition-all flex items-center justify-between ${
+                className={`w-full glass-card rounded-xl p-5 text-left transition-all flex items-start justify-between ${
                   isSelected 
                     ? 'ring-2 ring-primary bg-primary/10' 
                     : 'hover:bg-white/10'
                 }`}
               >
-                <span className="font-medium text-foreground">
-                  {preference.label}
-                </span>
-                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${
+                <div className="flex-1 pr-4">
+                  <h3 className="font-semibold text-foreground mb-2">
+                    {preference.label}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {preference.description}
+                  </p>
+                </div>
+                <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors flex-shrink-0 ${
                   isSelected 
                     ? 'bg-primary border-primary text-white' 
                     : 'border-secondary'

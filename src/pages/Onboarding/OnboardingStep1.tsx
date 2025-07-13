@@ -6,14 +6,16 @@ import { Header } from '../../components/Layout/Header';
 
 export const OnboardingStep1 = () => {
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const navigate = useNavigate();
 
   const handleNext = () => {
-    if (name && age && height && weight) {
+    if (name && email && age && height && weight) {
       localStorage.setItem('onboarding_name', name);
+      localStorage.setItem('onboarding_email', email);
       localStorage.setItem('onboarding_age', age);
       localStorage.setItem('onboarding_height', height);
       localStorage.setItem('onboarding_weight', weight);
@@ -45,6 +47,19 @@ export const OnboardingStep1 = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Seu nome"
+              className="w-full px-4 py-3 bg-muted rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-foreground mb-2">
+              Qual seu e-mail?
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="seuemail@exemplo.com"
               className="w-full px-4 py-3 bg-muted rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
             />
           </div>
@@ -93,7 +108,7 @@ export const OnboardingStep1 = () => {
 
         <button
           onClick={handleNext}
-          disabled={!name || !age || !height || !weight}
+          disabled={!name || !email || !age || !height || !weight}
           className="w-full bg-primary hover:bg-primary/90 disabled:bg-secondary disabled:text-muted-foreground text-white py-4 px-6 rounded-xl font-semibold transition-colors flex items-center justify-center"
         >
           Continuar
