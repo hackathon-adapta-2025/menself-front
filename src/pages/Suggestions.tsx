@@ -1,9 +1,8 @@
-
 import { useState } from 'react';
 import { Filter } from 'lucide-react';
 import { Header } from '../components/Layout/Header';
 import { TabBar } from '../components/Layout/TabBar';
-import { SuggestionCard } from '../components/UI/SuggestionCard';
+import { SuggestionCard } from '../components/custom/SuggestionCard';
 
 const categories = [
   { id: 'all', label: 'Todos' },

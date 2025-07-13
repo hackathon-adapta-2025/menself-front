@@ -1,9 +1,8 @@
-
 import { useState } from 'react';
 import { Camera, Upload } from 'lucide-react';
 import { Header } from '../components/Layout/Header';
 import { TabBar } from '../components/Layout/TabBar';
-import { ProgressChart } from '../components/UI/ProgressChart';
+import { ProgressChart } from '../components/custom/ProgressChart';
 
 const progressData = [
   { day: 'Seg', value: 20, completed: true },
