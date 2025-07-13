@@ -1,53 +1,54 @@
-import { Toaster } from '@/components/ui/toaster'
-import { Toaster as Sonner } from '@/components/ui/sonner'
-import { TooltipProvider } from '@/components/ui/tooltip'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 // Pages
-import { Home } from './pages/Home'
-import { Plan } from './pages/Plan'
-import { Suggestions } from './pages/Suggestions'
-import { Progress } from './pages/Progress'
-import { Profile } from './pages/Profile'
-import { TaskDetail } from './pages/TaskDetail'
-import { SuggestionDetail } from './pages/SuggestionDetail'
+import { Home } from "./pages/Home";
+import { Plan } from "./pages/Plan";
+import { Suggestions } from "./pages/Suggestions";
+import { Progress } from "./pages/Progress";
+import { Profile } from "./pages/Profile";
+import { TaskDetail } from "./pages/TaskDetail";
+import { SuggestionDetail } from "./pages/SuggestionDetail";
 
 // Onboarding
-import { OnboardingStep1 } from './pages/Onboarding/OnboardingStep1'
-import { OnboardingStep2 } from './pages/Onboarding/OnboardingStep2'
-import { OnboardingStep3 } from './pages/Onboarding/OnboardingStep3'
-import { OnboardingStep4 } from './pages/Onboarding/OnboardingStep4'
-import { OnboardingStep5 } from './pages/Onboarding/OnboardingStep5'
-import { OnboardingStep6 } from './pages/Onboarding/OnboardingStep6'
-import { OnboardingPreview } from './pages/Onboarding/OnboardingPreview'
+import { OnboardingStep1 } from "./pages/Onboarding/OnboardingStep1";
+import { OnboardingStep2 } from "./pages/Onboarding/OnboardingStep2";
+import { OnboardingStep3 } from "./pages/Onboarding/OnboardingStep3";
+import { OnboardingStep4 } from "./pages/Onboarding/OnboardingStep4";
+import { OnboardingStep5 } from "./pages/Onboarding/OnboardingStep5";
+import { OnboardingStep6 } from "./pages/Onboarding/OnboardingStep6";
+import { OnboardingPreview } from "./pages/Onboarding/OnboardingPreview";
 
-import NotFound from './pages/NotFound'
+import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 const AppContent = () => {
   const [isOnboardingCompleted, setIsOnboardingCompleted] = useState<
     boolean | null
-  >(false)
+  >(false);
 
   useEffect(() => {
     // const completed = localStorage.getItem('onboarding_completed') === 'true'
     // setIsOnboardingCompleted(completed)
-  }, [])
+  }, []);
 
   if (isOnboardingCompleted === null) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
       </div>
-    )
+    );
   }
 
   return (
     <div className="min-h-screen bg-background font-inter">
       <Routes>
+        <Route path="/" element={<OnboardingStep1 />} />
         <Route path="/onboarding/step1" element={<OnboardingStep1 />} />
         <Route path="/onboarding/step2" element={<OnboardingStep2 />} />
         <Route path="/onboarding/step3" element={<OnboardingStep3 />} />
@@ -55,7 +56,7 @@ const AppContent = () => {
         <Route path="/onboarding/step5" element={<OnboardingStep5 />} />
         <Route path="/onboarding/step6" element={<OnboardingStep6 />} />
         <Route path="/onboarding/preview" element={<OnboardingPreview />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/plan" element={<Plan />} />
         <Route path="/suggestions" element={<Suggestions />} />
         <Route path="/suggestions/:id" element={<SuggestionDetail />} />
@@ -64,8 +65,8 @@ const AppContent = () => {
         <Route path="/task/:id" element={<TaskDetail />} />
       </Routes>
     </div>
-  )
-}
+  );
+};
 
 const App = () => {
   return (
@@ -78,7 +79,7 @@ const App = () => {
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -1,15 +1,15 @@
-import { useNavigate } from 'react-router-dom'
-import { ArrowRight, Sparkles, AlertTriangle } from 'lucide-react'
-import { Header } from '../../components/Layout/Header'
+import { useNavigate } from "react-router-dom";
+import { ArrowRight, Sparkles, AlertTriangle } from "lucide-react";
+import { Header } from "../../components/Layout/Header";
 
 export const OnboardingPreview = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleStartPlan = () => {
-    navigate('/')
-  }
+    navigate("/home");
+  };
 
-  const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
+  const data = JSON.parse(localStorage.getItem("onboarding_result") || "{}");
 
   return (
     <div className="min-h-screen bg-background pt-3">
@@ -76,5 +76,5 @@ export const OnboardingPreview = () => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
