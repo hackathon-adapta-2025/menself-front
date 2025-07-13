@@ -62,7 +62,7 @@ export const submitOnboarding = async (): Promise<{
     }
 
     const response = await fetch(
-      'https://hackathon-ten-sable.vercel.app/api/onboarding',
+      'http://localhost:3000/api/onboarding',
       {
         method: 'POST',
         headers: {

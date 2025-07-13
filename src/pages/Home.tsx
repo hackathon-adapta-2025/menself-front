@@ -1,39 +1,34 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Plus, Target, Calendar } from 'lucide-react'
 import { Header } from '../components/Layout/Header'
 import { TabBar } from '../components/Layout/TabBar'
 import { TaskCard } from '../components/custom/TaskCard'
 
-const todayTasks = [
-  {
-    id: '1',
-    title: 'Hidratação facial matinal',
-    description: 'Aplique o hidratante com FPS 30 em movimentos circulares',
-    category: 'skincare' as const,
-    progress: 0
-  },
-  {
-    id: '2',
-    title: '10 minutos de postura',
-    description: 'Exercícios para fortalecer o core e melhorar a postura',
-    category: 'posture' as const,
-    progress: 45
-  },
-  {
-    id: '3',
-    title: 'Escolha do outfit',
-    description: 'Use uma das combinações sugeridas no seu moodboard',
-    category: 'style' as const,
-    progress: 0
-  }
-]
 
 export const Home = () => {
-  const [tasks, setTasks] = useState(todayTasks)
+    const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
+
+    const daysTask = useMemo(() => {
+    return data?.profile?.missions[0]?.dailyTasks.map((task, index) => {
+      return ({
+        id: index,
+        title: task.title,
+        description: task.description,
+        category: 'skincare' as const,
+        progress: task.progress ?? 0
+      })
+    });
+  }, [data])
+
+
+  const [tasks, setTasks] = useState(daysTask)
   const userName = localStorage.getItem('onboarding_name') || 'Usuário'
   const completedTasks = tasks.filter(task => task.progress === 100).length
 
-  const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
+  useEffect(() => {
+    console.log(daysTask, "daysTask")
+  }, [data]);
+
 
   const handleCompleteTask = (taskId: string) => {
     setTasks(prev =>
@@ -53,7 +48,7 @@ export const Home = () => {
         showNotifications
         rightAction={
           <span className="text-lg font-medium text-foreground mr-2">
-            Olá, {data.user.name}
+            Olá, {data?.user?.name}
           </span>
         }
       />
@@ -95,9 +90,10 @@ export const Home = () => {
         {/* Tasks */}
         {tasks.length > 0 ? (
           <div className="space-y-4">
-            {tasks.map(task => (
+            {tasks.map((task, index) => (
               <TaskCard
-                key={task.id}
+                key={index}
+                id={index}
                 title={task.title}
                 description={task.description}
                 category={task.category}

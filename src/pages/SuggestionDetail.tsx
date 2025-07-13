@@ -238,20 +238,6 @@ export const SuggestionDetail = () => {
 
             <div className="mb-6">
               <h3 className="font-semibold text-foreground mb-3">
-                Dicas importantes:
-              </h3>
-              <ul className="space-y-2">
-                {suggestion.tips.map((tip, index) => (
-                  <li key={index} className="flex items-start">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{tip}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mb-6">
-              <h3 className="font-semibold text-foreground mb-3">
                 Ideal para:
               </h3>
               <div className="flex flex-wrap gap-2">

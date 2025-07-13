@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface TaskCardProps {
+  id: number;
   title: string;
   description: string;
   category: 'exercise' | 'nutrition' | 'skincare' | 'posture' | 'style';
@@ -30,6 +31,7 @@ const categoryLabels = {
 };
 
 export const TaskCard = ({
+  id,
   title,
   description,
   category,
@@ -47,11 +49,7 @@ export const TaskCard = ({
   };
 
   const handleCardClick = () => {
-    // Encontrar o ID da tarefa baseado no título
-    const taskId = title === 'Hidratação facial matinal' ? '1' : 
-                   title === '10 minutos de postura' ? '2' : 
-                   title === 'Escolha do outfit' ? '3' : '1';
-    navigate(`/task/${taskId}`);
+    navigate(`/task/${id}`);
   };
 
   return (

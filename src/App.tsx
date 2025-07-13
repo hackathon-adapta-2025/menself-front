@@ -30,11 +30,11 @@ const queryClient = new QueryClient()
 const AppContent = () => {
   const [isOnboardingCompleted, setIsOnboardingCompleted] = useState<
     boolean | null
-  >(null)
+  >(false)
 
   useEffect(() => {
-    const completed = localStorage.getItem('onboarding_completed') === 'true'
-    setIsOnboardingCompleted(completed)
+    // const completed = localStorage.getItem('onboarding_completed') === 'true'
+    // setIsOnboardingCompleted(completed)
   }, [])
 
   if (isOnboardingCompleted === null) {

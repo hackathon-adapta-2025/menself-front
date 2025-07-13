@@ -68,11 +68,15 @@ const categoryLabels = {
 };
 
 export const TaskDetail = () => {
-  const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
-  const [isCompleted, setIsCompleted] = useState(false);
+  const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
 
-  const task = id ? taskDetails[id as keyof typeof taskDetails] : null;
+  const { id } = useParams<{ id: string }>();
+  const task = id ?  data?.profile?.missions[0]?.dailyTasks[id as keyof typeof taskDetails] : null;
+
+  const navigate = useNavigate();
+  const [isCompleted, setIsCompleted] = useState(task.progress);
+
+
 
   if (!task) {
     return (
@@ -85,6 +89,38 @@ export const TaskDetail = () => {
   const handleComplete = () => {
     setIsCompleted(true);
     setTimeout(() => navigate('/'), 1500);
+
+  
+    let newTasks = data?.profile?.missions[0]?.dailyTasks?.map((task, index) =>
+   index == id ? { ...task, progress: 100 } : { ...task, index: index});
+
+
+    let newMissions = data?.profile?.missions?.map((data, index) => {
+      if(index === 0) {
+        return {
+          ...data,
+          dailyTasks: newTasks
+        }
+      }
+
+      return data;
+    })
+
+    console.log({
+      ...data,
+      profile: {
+        ...data.profile,
+        missions: newMissions
+      }
+    })
+    localStorage.setItem('onboarding_result', JSON.stringify({
+      ...data,
+      profile: {
+        ...data.profile,
+        missions: newMissions
+      }
+    }));
+
   };
 
   const handleSkip = () => {
@@ -116,18 +152,6 @@ export const TaskDetail = () => {
               <p className="text-xs text-muted-foreground mb-1">Frequência</p>
               <p className="font-medium text-foreground">{task.frequency}</p>
             </div>
-          </div>
-          
-          <div className="mb-6">
-            <h3 className="font-semibold text-foreground mb-3">Dicas importantes:</h3>
-            <ul className="space-y-2">
-              {task.tips.map((tip, index) => (
-                <li key={index} className="flex items-start">
-                  <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 mr-3 flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">{tip}</span>
-                </li>
-              ))}
-            </ul>
           </div>
           
           {isCompleted ? (
