@@ -12,8 +12,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     VitePWA({
-      registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "apple-touch-icon.png", "icons/*.png"], // Add your icons here
+      includeAssets: ["favicon.ico", "icons/*.jpg"],
       manifest: {
         name: "Menself",
         short_name: "Menself",
@@ -45,7 +44,7 @@ export default defineConfig(({ mode }) => ({
         ],
       },
     }),
-  ].filter(Boolean),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
