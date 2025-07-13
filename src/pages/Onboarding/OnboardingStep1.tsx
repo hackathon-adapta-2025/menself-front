@@ -7,12 +7,16 @@ import { Header } from '../../components/Layout/Header';
 export const OnboardingStep1 = () => {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
   const navigate = useNavigate();
 
   const handleNext = () => {
-    if (name && age) {
+    if (name && age && height && weight) {
       localStorage.setItem('onboarding_name', name);
       localStorage.setItem('onboarding_age', age);
+      localStorage.setItem('onboarding_height', height);
+      localStorage.setItem('onboarding_weight', weight);
       navigate('/onboarding/step2');
     }
   };
@@ -57,11 +61,39 @@ export const OnboardingStep1 = () => {
               className="w-full px-4 py-3 bg-muted rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
             />
           </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">
+                Altura (cm)
+              </label>
+              <input
+                type="number"
+                value={height}
+                onChange={(e) => setHeight(e.target.value)}
+                placeholder="Ex: 175"
+                className="w-full px-4 py-3 bg-muted rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-foreground mb-2">
+                Peso (kg)
+              </label>
+              <input
+                type="number"
+                value={weight}
+                onChange={(e) => setWeight(e.target.value)}
+                placeholder="Ex: 75"
+                className="w-full px-4 py-3 bg-muted rounded-xl text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+              />
+            </div>
+          </div>
         </div>
 
         <button
           onClick={handleNext}
-          disabled={!name || !age}
+          disabled={!name || !age || !height || !weight}
           className="w-full bg-primary hover:bg-primary/90 disabled:bg-secondary disabled:text-muted-foreground text-white py-4 px-6 rounded-xl font-semibold transition-colors flex items-center justify-center"
         >
           Continuar

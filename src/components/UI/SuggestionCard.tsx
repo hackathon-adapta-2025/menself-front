@@ -1,5 +1,5 @@
 
-import { Heart, Eye } from 'lucide-react';
+import { Heart, Eye, Info } from 'lucide-react';
 import { useState } from 'react';
 
 interface SuggestionCardProps {
@@ -37,6 +37,11 @@ export const SuggestionCard = ({
     onLike?.(id);
   };
 
+  const handleLearnMore = () => {
+    console.log('Saiba mais sobre:', title);
+    // Aqui abriria modal com mais informações
+  };
+
   return (
     <div className="glass-card rounded-xl overflow-hidden w-72 flex-shrink-0">
       <div className="relative">
@@ -66,13 +71,23 @@ export const SuggestionCard = ({
         <h3 className="font-semibold text-foreground mb-2">{title}</h3>
         <p className="text-sm text-muted-foreground mb-4">{description}</p>
         
-        <button
-          onClick={() => onVisualize?.(id)}
-          className="w-full bg-primary hover:bg-primary/90 text-white py-2 px-4 rounded-lg font-medium transition-colors flex items-center justify-center"
-        >
-          <Eye size={16} className="mr-2" />
-          Visualizar no meu rosto
-        </button>
+        <div className="flex space-x-3">
+          <button
+            onClick={handleLearnMore}
+            className="flex-1 border border-secondary text-secondary hover:bg-secondary/10 py-2 px-4 rounded-lg font-medium transition-colors flex items-center justify-center"
+          >
+            <Info size={16} className="mr-2" />
+            Saiba mais
+          </button>
+          
+          <button
+            onClick={() => onVisualize?.(id)}
+            className="flex-1 bg-primary hover:bg-primary/90 text-white py-2 px-4 rounded-lg font-medium transition-colors flex items-center justify-center"
+          >
+            <Eye size={16} className="mr-2" />
+            Preview
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
 
-import { Calendar, CheckCircle, Lock } from 'lucide-react';
+import { Calendar, CheckCircle, Lock, Eye } from 'lucide-react';
 import { Header } from '../components/Layout/Header';
 import { TabBar } from '../components/Layout/TabBar';
+import { Progress } from '../components/ui/progress';
 
 const weeks = [
   {
@@ -35,6 +36,11 @@ const weeks = [
 ];
 
 export const Plan = () => {
+  const handleVisualizeGoal = () => {
+    console.log('Visualizando objetivo com preview gerado');
+    // Aqui abriria modal com a imagem de preview
+  };
+
   return (
     <div className="min-h-screen bg-background pb-20">
       <Header title="Plano de 12 Meses" />
@@ -53,9 +59,34 @@ export const Plan = () => {
             </div>
           </div>
           
-          <div className="w-full bg-secondary/30 rounded-full h-2">
-            <div className="bg-primary h-2 rounded-full w-[15%] transition-all duration-300" />
+          <div className="mb-4">
+            <Progress value={15} className="h-2" />
           </div>
+
+          <button
+            onClick={handleVisualizeGoal}
+            className="w-full border border-primary text-primary hover:bg-primary/10 py-3 px-4 rounded-lg font-medium transition-colors flex items-center justify-center"
+          >
+            <Eye size={16} className="mr-2" />
+            Visualizar Objetivo
+          </button>
+        </div>
+
+        {/* 12-Month Progress Bar */}
+        <div className="glass-card rounded-xl p-6 mb-6">
+          <h3 className="text-lg font-semibold text-foreground mb-4">
+            Progresso Anual
+          </h3>
+          <div className="mb-3">
+            <div className="flex justify-between text-sm text-muted-foreground mb-2">
+              <span>Mês 1</span>
+              <span>Mês 12</span>
+            </div>
+            <Progress value={8.3} className="h-3" />
+          </div>
+          <p className="text-sm text-muted-foreground">
+            1 de 12 meses concluído
+          </p>
         </div>
 
         {/* Weekly Timeline */}
