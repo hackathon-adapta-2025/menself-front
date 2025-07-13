@@ -7,13 +7,17 @@ interface HeaderProps {
   showBack?: boolean;
   showNotifications?: boolean;
   rightAction?: React.ReactNode;
+  showLogo?: boolean;
+  logoSrc?: string;
 }
 
 export const Header = ({ 
   title, 
   showBack = false, 
   showNotifications = false,
-  rightAction 
+  rightAction,
+  showLogo = false,
+  logoSrc
 }: HeaderProps) => {
   const navigate = useNavigate();
 
@@ -28,8 +32,16 @@ export const Header = ({
             <ArrowLeft size={24} strokeWidth={2} />
           </button>
         )}
-        {title && (
-          <h1 className="text-xl font-semibold text-foreground">{title}</h1>
+        {showLogo && logoSrc ? (
+          <img 
+            src={logoSrc} 
+            alt="Menself" 
+            className="h-8 w-auto"
+          />
+        ) : (
+          title && (
+            <h1 className="text-xl font-semibold text-foreground">{title}</h1>
+          )
         )}
       </div>
       

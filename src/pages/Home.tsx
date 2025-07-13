@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Plus, Target, Calendar } from "lucide-react";
 import { Header } from "../components/Layout/Header";
@@ -47,7 +48,16 @@ export const Home = () => {
 
   return (
     <div className="min-h-screen bg-background pb-20">
-      <Header title={`Olá, ${userName}`} showNotifications />
+      <Header 
+        showLogo 
+        logoSrc="/lovable-uploads/17f76da1-690c-41d2-88a5-666eb0213486.png"
+        showNotifications 
+        rightAction={
+          <span className="text-lg font-medium text-foreground mr-2">
+            Olá, {userName}
+          </span>
+        }
+      />
 
       <div className="px-4 py-6">
         {/* Stats Cards */}
