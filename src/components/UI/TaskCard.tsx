@@ -1,3 +1,4 @@
+
 import { Check, ArrowRight, X } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -97,33 +98,6 @@ export const TaskCard = ({
               style={{ width: `${progress}%` }}
             />
           </div>
-        </div>
-      )}
-
-      {!isCompleted && (
-        <div className="flex space-x-2 mt-4">
-          {onSkip && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                onSkip();
-              }}
-              className="px-4 py-2 text-secondary hover:text-foreground transition-colors flex items-center justify-center"
-            >
-              <X size={16} className="mr-1" />
-              Pular
-            </button>
-          )}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              handleComplete();
-            }}
-            className="flex-1 bg-primary hover:bg-primary/90 text-white py-2 px-4 rounded-lg font-medium transition-colors flex items-center justify-center"
-          >
-            Concluir
-            <ArrowRight size={16} className="ml-1" />
-          </button>
         </div>
       )}
     </div>
