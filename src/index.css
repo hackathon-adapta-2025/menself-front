@@ -6,33 +6,33 @@
 /* Custom design system for masculine inclusive app */
 @layer base {
   :root {
-    --background: 222 222 222; /* #1F1F1F */
-    --foreground: 255 255 255; /* White text */
+    --background: 210 11% 15%; /* #1F1F23 - Background mais suave */
+    --foreground: 0 0% 98%; /* #FAFAFA - Texto principal mais claro */
     
-    --card: 47 47 47; /* #2F2F2F */
-    --card-foreground: 255 255 255;
+    --card: 210 10% 23%; /* #353539 - Cards com melhor contraste */
+    --card-foreground: 0 0% 98%;
     
-    --popover: 47 47 47;
-    --popover-foreground: 255 255 255;
+    --popover: 210 10% 23%;
+    --popover-foreground: 0 0% 98%;
     
-    --primary: 24 102 0; /* #FF6600 converted to HSL */
-    --primary-foreground: 255 255 255;
+    --primary: 22 100% 52%; /* #FF6600 - Laranja vibrante */
+    --primary-foreground: 0 0% 100%;
     
-    --secondary: 101 101 101; /* #656565 */
-    --secondary-foreground: 255 255 255;
+    --secondary: 210 6% 46%; /* #6B7280 - Cinza médio com melhor contraste */
+    --secondary-foreground: 0 0% 98%;
     
-    --muted: 47 47 47;
-    --muted-foreground: 156 163 175;
+    --muted: 210 10% 23%;
+    --muted-foreground: 215 16% 65%; /* #9CA3AF - Texto secundário mais legível */
     
-    --accent: 24 102 0; /* #FF6600 */
-    --accent-foreground: 255 255 255;
+    --accent: 22 100% 52%; /* #FF6600 */
+    --accent-foreground: 0 0% 100%;
     
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
     
-    --border: 101 101 101;
-    --input: 47 47 47;
-    --ring: 24 102 0;
+    --border: 215 14% 34%; /* #4B5563 - Bordas mais visíveis */
+    --input: 210 10% 23%;
+    --ring: 22 100% 52%;
     
     --radius: 0.75rem; /* 12px */
   }
@@ -44,28 +44,28 @@
   }
   
   body {
-    @apply bg-[#1F1F1F] text-foreground font-inter;
+    @apply bg-background text-foreground font-inter;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
   
   h1 {
-    @apply text-[32px] font-semibold leading-tight;
+    @apply text-[32px] font-semibold leading-tight text-foreground;
   }
   
   h2 {
-    @apply text-[24px] font-medium leading-tight;
+    @apply text-[24px] font-medium leading-tight text-foreground;
   }
   
   .body-text {
-    @apply text-[16px] leading-relaxed;
+    @apply text-[16px] leading-relaxed text-foreground;
   }
 }
 
-/* Glass card effect */
+/* Glass card effect with better contrast */
 .glass-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Custom scrollbar for mobile */
@@ -78,7 +78,7 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 2px;
 }
 
