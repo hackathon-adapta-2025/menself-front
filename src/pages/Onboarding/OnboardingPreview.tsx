@@ -33,7 +33,8 @@ export const OnboardingPreview = () => {
           {/* Placeholder para imagem IA - em um app real seria gerada */}
           <div className="w-full relative h-64 rounded-lg flex items-center justify-center mb-4">
             <img
-              src={data.profile.imagePreview}
+              // src={data.profile.imagePreview}
+              src="https://dyshlhdadcxrtlbkphdr.supabase.co/storage/v1/object/public/attachments/generated-images/a9a8d14a-e1a5-4dcd-9885-0bc0f78deef0.jpeg"
               className="absolute inset-0 rounded-lg h-64 mx-auto"
             />
           </div>

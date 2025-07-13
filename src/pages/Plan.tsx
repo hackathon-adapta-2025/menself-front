@@ -1,66 +1,51 @@
-import { Calendar, CheckCircle, Lock, Eye } from 'lucide-react'
-import { Header } from '../components/Layout/Header'
-import { TabBar } from '../components/Layout/TabBar'
-import { Progress } from '../components/ui/progress'
-import { useMemo } from 'react'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger
 } from '@/components/ui/popover'
+import { Calendar, CheckCircle, Eye, Lock } from 'lucide-react'
+import { Header } from '../components/Layout/Header'
+import { TabBar } from '../components/Layout/TabBar'
+import { Progress } from '../components/ui/progress'
+
+const weeks = [
+  {
+    week: 1,
+    title: 'Fundamentos',
+    description: 'Estabelecendo rotinas básicas',
+    completed: true,
+    current: false
+  },
+  {
+    week: 2,
+    title: 'Cuidados Essenciais',
+    description: 'Skincare e higiene pessoal',
+    completed: false,
+    current: true
+  },
+  {
+    week: 3,
+    title: 'Estilo Pessoal',
+    description: 'Descobrindo seu visual',
+    completed: false,
+    current: false
+  },
+  {
+    week: 4,
+    title: 'Forma Física',
+    description: 'Exercícios e postura',
+    completed: false,
+    current: false
+  }
+]
 
 export const Plan = () => {
-  const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
-
   const handleVisualizeGoal = () => {
     console.log('Visualizando objetivo com preview gerado')
     // Aqui abriria modal com a imagem de preview
   }
 
-  const weeks = useMemo(() => {
-     if(!Array.isArray(data?.profile?.missions) || !data?.profile?.missions.length) {
-      return [];
-    }
-
-    return data?.profile?.missions.map(week => {
-      return {
-        ...week,
-        completed:
-          (week.dailyTasks.filter(daily => daily.progress === 100).length /
-            week.dailyTasks.length) *
-          100,
-        current: false
-      }
-    })
-  }, [data])
-
-  const weeksCompleted = useMemo(() => {
-    return weeks.filter(week => week.completed).length
-  }, [weeks])
-
-  const weeksPercent = useMemo(() => {
-    return (weeksCompleted / weeks.length) * 100
-  }, [weeks])
-
-  const weekSelected = useMemo(() => {
-    return weeks.find(week => !week.completed)
-  }, [weeks])
-
-  const daysPercent = useMemo(() => {
-    if(!Array.isArray(weekSelected.dailyTasks)) {
-      return 0;
-    }
-
-    const daysCompleted = weekSelected.dailyTasks.filter(
-      day => day.completed
-    ).length
-
-    const allDays = weekSelected.dailyTasks.length;
-
-    const percent = (daysCompleted / allDays)  * 100;
-
-    return !isNaN(percent) ? percent : "0"
-  }, [weekSelected])
+  const data = JSON.parse(localStorage.getItem('onboarding_result') || '{}')
 
   return (
     <div className="min-h-screen bg-background pb-20 pt-3">
@@ -72,18 +57,18 @@ export const Plan = () => {
           <div className="flex items-center justify-between mb-4">
             <div>
               <h2 className="text-xl font-semibold text-foreground">
-                {weekSelected?.missionTitle}
+                Semana 2
               </h2>
               <p className="text-muted-foreground">Cuidados Essenciais</p>
             </div>
             <div className="text-right">
-              <p className="text-2xl font-bold text-primary">{daysPercent}%</p>
+              <p className="text-2xl font-bold text-primary">15%</p>
               <p className="text-sm text-muted-foreground">Concluído</p>
             </div>
           </div>
 
           <div className="mb-4">
-            <Progress value={daysPercent} className="h-2" />
+            <Progress value={15} className="h-2" />
           </div>
         </div>
 
@@ -116,10 +101,10 @@ export const Plan = () => {
               <span>Mês 1</span>
               <span>Mês 12</span>
             </div>
-            <Progress value={weeksPercent} className="h-3" />
+            <Progress value={8.3} className="h-3" />
           </div>
           <p className="text-sm text-muted-foreground">
-            {weeksCompleted} de {weeks.length} meses concluído
+            1 de 12 meses concluído
           </p>
         </div>
 
@@ -130,7 +115,7 @@ export const Plan = () => {
             Cronograma Mensal
           </h3>
 
-          {weeks?.map((week, index) => (
+          {weeks.map(week => (
             <div
               key={week.week}
               className={`glass-card rounded-xl p-4 transition-all ${
@@ -158,10 +143,10 @@ export const Plan = () => {
 
                 <div className="flex-1">
                   <h4 className="font-semibold text-foreground">
-                    {week.missionTitle}
+                    Semana {week.week}: {week.title}
                   </h4>
                   <p className="text-sm text-muted-foreground">
-                    {week.missionDescription}
+                    {week.description}
                   </p>
                 </div>
 
